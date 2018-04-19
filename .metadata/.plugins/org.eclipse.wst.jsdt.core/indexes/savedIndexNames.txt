@@ -1,7 +1,6 @@
 INDEX VERSION 1.4+C:\Users\ant51\OneDrive - uqac.ca\GestionDonOrgane\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3825627467.index
 2240721547.index
-822554161.index
+3825627467.index
 2712649626.index
 1436647898.index
 2401505847.index
