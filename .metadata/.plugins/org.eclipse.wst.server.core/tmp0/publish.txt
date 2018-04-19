@@ -1,4 +1,0 @@
-#Tomcat publish data
-#Thu Apr 19 18:00:06 EDT 2018
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\ant51\\.m2\\repository\\org\\springframework\\spring-web\\4.1.6.RELEASE\\spring-web-4.1.6.RELEASE.jar=C\:\\Users\\ant51\\Desktop\\spring-tool-suite-3.9.4.RELEASE-e4.7.3a-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\GestionDonOrgane\\WEB-INF\\lib\\spring-web-4.1.6.RELEASE.jar
-org.eclipse.jst.jee.server\:GestionDonOrgane=C\:\\Users\\ant51\\Desktop\\spring-tool-suite-3.9.4.RELEASE-e4.7.3a-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\GestionDonOrgane
