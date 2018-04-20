@@ -6,7 +6,8 @@ public enum UserProfileType {
 	ADMIN("ADMIN"),
 	TRANS("TRANS"),
 	DOCT("DOCT"),
-	HOPITTAL("HOPITTAL");
+	HOPITTAL("HOPITTAL"),
+	PATIENT("PATIENT");
 	
 	String userProfileType;
 	

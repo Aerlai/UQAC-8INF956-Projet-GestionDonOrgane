@@ -3,3 +3,6 @@
 /.recommenders/
 /RemoteSystemsTempFiles/
 /Servers/
+GestionDonOrgane/target/
+
+GestionDonOrgane/\.settings/
