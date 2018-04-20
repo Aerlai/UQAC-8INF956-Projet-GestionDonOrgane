@@ -27,7 +27,7 @@ public class PatientController {
 	@RequestMapping(value = "/patient", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		Patient patient = new Patient();
-		model.addAttribute("patient", patient);
+		model.addAttribute("patient", getPrincipal());
 		model.addAttribute("sang", getSang());
 		return "patient";
 	}

@@ -2,16 +2,26 @@ package com.websystique.springsecurity.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.websystique.springsecurity.model.Adresse;
+import com.websystique.springsecurity.model.Patient;
+import com.websystique.springsecurity.model.RegisterPatient;
+import com.websystique.springsecurity.model.User;
 import com.websystique.springsecurity.model.UserProfile;
+import com.websystique.springsecurity.service.PatientService;
 import com.websystique.springsecurity.service.UserProfileService;
 import com.websystique.springsecurity.service.UserService;
 
@@ -24,11 +34,59 @@ public class DocteurController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	PatientService patientService;
+	
 	// Gestionnaire admin
 	@RequestMapping(value = "/docteur", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "docteur";
+	}
+	
+	@RequestMapping(value = "/newPatient", method = RequestMethod.GET)
+	public ModelAndView newRegistration(ModelMap model) {
+		ModelAndView modelAndView = new ModelAndView();
+		RegisterPatient registerPatient = new RegisterPatient();
+		
+		model.addAttribute("registerPatient", registerPatient);
+		modelAndView.addAllObjects(model);
+		modelAndView.setViewName("newpatient");
+		return modelAndView;
+	}
+	
+	/*
+	 * This method will be called on form submission, handling POST request It
+	 * also validates the user input
+	 */
+	@RequestMapping(value = "/registerNewPatient", method = RequestMethod.POST)
+	public String saveRegistration(@Valid @ModelAttribute("registerPatient") RegisterPatient registerPatient, BindingResult result, Model model) { //@ModelAttrbite('User')User user, BindingResult resultUser, 
+		//@ModelAttribute('UserProfile')UserProfile userProfile, BindingResult resultProfile
+
+		if (result.hasErrors()) {
+			System.out.println("There are errors");
+			return "newuser";
+		}
+		registerPatient.getPatient().setAdresse(registerPatient.getAdresse());
+		User user = registerPatient.getPatient();
+		//userService.save(user);
+		patientService.save(registerPatient.getPatient());
+		
+		System.out.println("First Name : "+user.getFirstName());
+		System.out.println("Last Name : "+user.getLastName());
+		System.out.println("SSO ID : "+user.getSsoId());
+		System.out.println("Password : "+user.getPassword());
+		System.out.println("Email : "+user.getEmail());
+		System.out.println("Birthday : "+user.getBirthday());
+		System.out.println("Checking UsrProfiles....");
+		if(user.getUserProfiles()!=null){
+			for(UserProfile profile : user.getUserProfiles()){
+				System.out.println("Profile : "+ profile.getType());
+			}
+		}
+		
+		model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
+		return "registrationsuccess";
 	}
 	
 	private String getPrincipal(){
@@ -45,6 +103,7 @@ public class DocteurController {
 	
 	@ModelAttribute("roles")
 	public List<UserProfile> initializeProfiles() {
+		//TODO Un docteur ne devrait pas pouvoir set tous les roles
 		return userProfileService.findAll();
 	}
 

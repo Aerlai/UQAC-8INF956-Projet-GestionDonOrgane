@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.websystique.springsecurity.model.Hopital;
 import com.websystique.springsecurity.model.User;
 import com.websystique.springsecurity.model.UserProfile;
 import com.websystique.springsecurity.service.UserProfileService;
@@ -95,6 +96,16 @@ public class AdminController {
 	@ModelAttribute("roles")
 	public List<UserProfile> initializeProfiles() {
 		return userProfileService.findAll();
+	}
+	
+	
+	
+	/// HOPITAL
+	@RequestMapping(value = "/newHopital", method = RequestMethod.GET)
+	public String newHopital(ModelMap model) {
+		Hopital hopital = new Hopital();
+		model.addAttribute("hopital", hopital);
+		return "newhopital";
 	}
 
 }

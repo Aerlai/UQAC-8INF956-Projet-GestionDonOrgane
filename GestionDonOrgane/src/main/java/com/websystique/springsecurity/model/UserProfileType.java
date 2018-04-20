@@ -5,7 +5,7 @@ public enum UserProfileType {
 	DBA("DBA"),
 	ADMIN("ADMIN"),
 	TRANS("TRANS"),
-	DOCT("DOCT"),
+	DOCTEUR("DOCTEUR"),
 	HOPITTAL("HOPITTAL"),
 	PATIENT("PATIENT");
 	
