@@ -95,10 +95,10 @@ create table PATIENT(
 );
 
 create table DONNEUR(
-	id_personne bigint,
+	id bigint not null auto_increment,
+    nom VARCHAR(30) NOT NULL,
     groupe_sang varchar(3) NOT NULL,
-	constraint FK_PERSONNE_DONNEUR foreign key (id_personne) REFERENCES APP_USER (id),
-    primary key(id_personne)
+    primary key(id)
 );
 
 create table ORGANE(
@@ -114,7 +114,7 @@ create table DON(
     id_donneur bigint,
     id_organe int,
     id_typeSang int,
-    constraint FK_DONNEUR_DON foreign key (id_donneur) references DONNEUR(id_personne),
+    constraint FK_DONNEUR_DON foreign key (id_donneur) references DONNEUR(id),
     constraint FK_ORGANE_DON foreign key (id_organe) references ORGANE(id),
     primary key (id, id_donneur, id_organe)
 );
