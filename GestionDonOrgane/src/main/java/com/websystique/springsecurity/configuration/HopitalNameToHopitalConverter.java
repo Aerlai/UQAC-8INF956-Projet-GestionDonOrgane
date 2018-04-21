@@ -20,6 +20,7 @@ public class HopitalNameToHopitalConverter implements Converter<Object, Hopital>
 	 * @see org.springframework.core.convert.converter.Converter#convert(java.lang.Object)
 	 */
 	public Hopital convert(Object element) {
+		if(element instanceof Hopital) return (Hopital) element;
 		String name = ((String)element);
 		Hopital hopital= hopitalService.findByName(name);
 		System.out.println("Hopital : "+hopital);
