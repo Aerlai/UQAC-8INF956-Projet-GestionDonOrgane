@@ -10,8 +10,8 @@ import com.websystique.springsecurity.model.Patient;
 @Repository("hopitalDao")
 public class HopitalDaoImpl extends AbstractDao<Integer, Hopital>implements HopitalDao {
 
-	public void save(Hopital user) {
-		persist(user);
+	public void save(Hopital hopital) {
+		persist(hopital);
 	}
 	
 	public Hopital findById(int id) {

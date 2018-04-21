@@ -1,10 +1,13 @@
 package com.websystique.springsecurity.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,8 +32,9 @@ public class Hopital {
 	@Column(name="email",columnDefinition="VARCHAR(30)", nullable=false)
 	private String email;
 	
-	@Column(name="id_adresse", unique=true)
-	private int id_adresse;
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="id_adresse")
+	private Adresse adresse;
 
 	public int getId() {
 		return id;
@@ -56,15 +60,14 @@ public class Hopital {
 		this.email = email;
 	}
 
-	public int getId_adresse() {
-		return id_adresse;
+	public Adresse getAdresse() {
+		return adresse;
 	}
 
-	public void setId_adresse(int id_adresse) {
-		this.id_adresse = id_adresse;
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
-	
-	
+
 	
 	
 	

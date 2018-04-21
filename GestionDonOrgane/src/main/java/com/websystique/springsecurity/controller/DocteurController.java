@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.websystique.springsecurity.model.Adresse;
-import com.websystique.springsecurity.model.Patient;
 import com.websystique.springsecurity.model.RegisterPatient;
 import com.websystique.springsecurity.model.User;
 import com.websystique.springsecurity.model.UserProfile;

@@ -16,64 +16,45 @@
  	<div class="form-container">
  	
  	<h1>New Hopital Registration Form</h1>
- 	
-	<form:form method="POST" modelAttribute="hopital" class="form-horizontal">
 
+	<form:form method="POST" action="registerNewHopital" commandName="registerHopital" class="form-horizontal">
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="firstName">First Name</label>
+				<label class="col-md-3 control-lable" for="name">Nom</label>
 				<div class="col-md-7">
-					<form:input type="text" path="firstName" id="firstName" class="form-control input-sm"/>
+					<form:input type="text" path="hopital.Nom" id="name" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="firstName" class="help-inline"/>
+						<form:errors path="hopital.nom" class="help-inline"/>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="lastName">Last Name</label>
-				<div class="col-md-7">
-					<form:input type="text" path="lastName" id="lastName" class="form-control input-sm"/>
-					<div class="has-error">
-						<form:errors path="lastName" class="help-inline"/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
-				<div class="col-md-7">
-					<form:input type="text" path="ssoId" id="ssoId" class="form-control input-sm"/>
-					<div class="has-error">
-						<form:errors path="ssoId" class="help-inline"/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="password">Password</label>
-				<div class="col-md-7">
-					<form:input type="password" path="password" id="password" class="form-control input-sm"/>
-					<div class="has-error">
-						<form:errors path="password" class="help-inline"/>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="email">Email</label>
 				<div class="col-md-7">
-					<form:input type="text" path="email" id="email" class="form-control input-sm"/>
+					<form:input type="text" path="hopital.email" id="email" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="email" class="help-inline"/>
+						<form:errors path="hopital.email" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- ADRESSE -->
+		
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="Address1">Address1</label>
+				<div class="col-md-7">
+					<form:input type="text" path="adresse.Address1" id="Address1" class="form-control input-sm"/>
+					<div class="has-error">
+						<form:errors path="adresse.Address1" class="help-inline"/>
 					</div>
 				</div>
 			</div>
@@ -81,28 +62,76 @@
 		
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="birthday">Email</label>
+				<label class="col-md-3 control-lable" for="Address2">Address2</label>
 				<div class="col-md-7">
-					<form:input type="date" path="birthday" id="birthday" class="form-control input-sm"/>
+					<form:input type="text" path="adresse.Address2" id="Address2" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="email" class="help-inline"/>
+						<form:errors path="adresse.Address2" class="help-inline"/>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
+		
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="userProfiles">Roles</label>
+				<label class="col-md-3 control-lable" for="Address3">Address3</label>
 				<div class="col-md-7">
-					<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm"/>
+					<form:input type="text" path="adresse.Address3" id="Address3" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="userProfiles" class="help-inline"/>
+						<form:errors path="adresse.Address3" class="help-inline"/>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="City">City</label>
+				<div class="col-md-7">
+					<form:input type="text" path="adresse.City" id="City" class="form-control input-sm"/>
+					<div class="has-error">
+						<form:errors path="adresse.City" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="State">State</label>
+				<div class="col-md-7">
+					<form:input type="text" path="adresse.State" id="State" class="form-control input-sm"/>
+					<div class="has-error">
+						<form:errors path="adresse.State" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="Country">Country</label>
+				<div class="col-md-7">
+					<form:input type="text" path="adresse.Country" id="adresse.Country" class="form-control input-sm"/>
+					<div class="has-error">
+						<form:errors path="adresse.Country" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="PostalCode">Postal Code</label>
+				<div class="col-md-7">
+					<form:input type="text" path="adresse.PostalCode" id="PostalCode" class="form-control input-sm"/>
+					<div class="has-error">
+						<form:errors path="adresse.PostalCode" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 
 		<div class="row">
 			<div class="form-actions floatRight">
