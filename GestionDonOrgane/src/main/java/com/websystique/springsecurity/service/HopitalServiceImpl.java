@@ -1,5 +1,7 @@
 package com.websystique.springsecurity.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,15 @@ public class HopitalServiceImpl implements HopitalService{
 	
 	public Hopital findById(int id) {
 		return dao.findById(id);
+	}
+
+	public List<Hopital> findAll() {
+		return dao.findAll();
+	}
+
+	@Override
+	public Hopital findByName(String name) {
+		return dao.findByName(name);
 	}
 	
 }

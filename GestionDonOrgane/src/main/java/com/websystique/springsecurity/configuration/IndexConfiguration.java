@@ -19,6 +19,8 @@ public class IndexConfiguration extends WebMvcConfigurerAdapter {
 	@Autowired
 	RoleToUserProfileConverter roleToUserProfileConverter;
 	
+	@Autowired
+	HopitalNameToHopitalConverter hopitalNameToHopitalConverter;
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -45,6 +47,7 @@ public class IndexConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(roleToUserProfileConverter);
+        registry.addConverter(hopitalNameToHopitalConverter);
     }
     
     

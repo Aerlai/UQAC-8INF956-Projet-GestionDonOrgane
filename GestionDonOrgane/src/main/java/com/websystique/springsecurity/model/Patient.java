@@ -58,7 +58,7 @@ public class Patient extends User{
 //		this.id_hopital = id_hopital;
 //	}
 	
-	public Adresse getAddress() {
+	public Adresse getAdresse() {
 	    return adresse;
 	  }
 
