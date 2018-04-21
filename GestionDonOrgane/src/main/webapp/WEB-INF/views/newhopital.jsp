@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 
@@ -12,10 +13,39 @@
 </head>
 
 <body>
-
- 	<div class="form-container">
- 	
- 	<h1>New Hopital Registration Form</h1>
+	<nav>
+		<ul>
+			<li> 
+				<a href="<c:url value='/' />">Accueil</a>
+			</li>
+			<security:authorize access="hasRole('ADMIN')">
+				<li> 
+					<a href="<c:url value="/admin"/>">Panneau Administrateur</a>
+				</li>
+			</security:authorize>
+			<security:authorize access="hasRole('DOCTEUR')">
+				<li> 
+					<a href="<c:url value="/docteur"/>">Panneau Docteur</a>
+				</li>
+			</security:authorize>
+			<security:authorize access="hasRole('PATIENT')">
+				<li> 
+					<a href="<c:url value="/patient"/>">Profil patient</a>
+				</li>
+			</security:authorize>
+			<li>
+				<security:authorize access="isAnonymous()">
+					<a href="<c:url value="/login"/>">Connexion</a>
+				</security:authorize>
+				<security:authorize access="isAuthenticated()">
+        			<a href="<c:url value="/logout"/>">Logout</a>
+   				 </security:authorize>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<article class="form-container">
+			<h1>Formulaire d'ajout d'un hopital</h1>
 
 	<form:form method="POST" action="registerNewHopital" commandName="registerHopital" class="form-horizontal">
 		<div class="row">
@@ -139,6 +169,7 @@
 			</div>
 		</div>
 	</form:form>
-	</div>
+		</article>
+	</section>
 </body>
 </html>
