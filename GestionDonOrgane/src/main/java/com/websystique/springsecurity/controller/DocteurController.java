@@ -16,11 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.websystique.springsecurity.model.Don;
 import com.websystique.springsecurity.model.Donneur;
+import com.websystique.springsecurity.model.Organe;
+import com.websystique.springsecurity.model.RegisterDon;
 import com.websystique.springsecurity.model.RegisterPatient;
 import com.websystique.springsecurity.model.User;
 import com.websystique.springsecurity.model.UserProfile;
+import com.websystique.springsecurity.service.DonService;
 import com.websystique.springsecurity.service.DonneurService;
+import com.websystique.springsecurity.service.OrganeService;
 import com.websystique.springsecurity.service.PatientService;
 import com.websystique.springsecurity.service.UserProfileService;
 import com.websystique.springsecurity.service.UserService;
@@ -38,6 +43,12 @@ public class DocteurController {
 	PatientService patientService;
 	@Autowired
 	DonneurService donneurService;
+	
+	@Autowired
+	OrganeService organeService;
+	
+	@Autowired
+	DonService donService;
 	
 	// Gestionnaire admin
 	@RequestMapping(value = "/docteur", method = RequestMethod.GET)
@@ -135,6 +146,45 @@ public class DocteurController {
 		return "registrationsuccess";
 	}
 	
+	@RequestMapping(value = "/newDon", method = RequestMethod.GET)
+	public ModelAndView newDon(ModelMap model) {
+		ModelAndView modelAndView = new ModelAndView();
+		RegisterDon donneur = new RegisterDon();
+		
+		model.addAttribute("registerDon", donneur);
+		model.addAttribute("organes",organeService.findAll());
+		modelAndView.addAllObjects(model);
+		modelAndView.setViewName("newdon");
+		return modelAndView;
+	}
+	
+	/*
+	 * This method will be called on form submission, handling POST request It
+	 * also validates the user input
+	 */
+	@RequestMapping(value = "/registerNewDon", method = RequestMethod.POST)
+	public String saveRegistration(@Valid @ModelAttribute("registerDon") RegisterDon registerDon, BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+			System.out.println("There are errors");
+			return "newdon";
+		}
+		
+		Donneur donneur = registerDon.getDonneur();
+
+		donneur = donneurService.save(donneur);
+		
+		for (Organe organe : registerDon.getListeDon()) {
+			Don don = new Don();
+			don.setDateDon(registerDon.getDateDon());
+			donService.save(don, donneur.getNom(), organe.getId());
+		}
+		//userService.save(user);
+		
+		
+		model.addAttribute("success", "Donneur " + donneur.getNom() + " has been registered successfully");
+		return "registrationsuccess";
+	}
 	private String getPrincipal(){
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

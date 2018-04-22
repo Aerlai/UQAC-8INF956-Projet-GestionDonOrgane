@@ -7,4 +7,6 @@ public interface DonneurDao {
 	void save(Donneur user);
 	
 	Donneur findById(int id);
+	
+	public Donneur findByName(String nom);
 }

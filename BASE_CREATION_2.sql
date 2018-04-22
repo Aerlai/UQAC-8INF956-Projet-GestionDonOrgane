@@ -98,7 +98,8 @@ create table DONNEUR(
 	id bigint not null auto_increment,
     nom VARCHAR(30) NOT NULL,
     groupe_sang varchar(3) NOT NULL,
-    primary key(id)
+    primary key(id),
+    UNIQUE(nom)
 );
 
 create table ORGANE(
@@ -109,14 +110,13 @@ create table ORGANE(
 );
 
 create table DON(
-	id int not null auto_increment,
+	#id int not null auto_increment, #Ca marche avec
     date_don date not null,
     id_donneur bigint,
     id_organe int,
-    id_typeSang int,
     constraint FK_DONNEUR_DON foreign key (id_donneur) references DONNEUR(id),
     constraint FK_ORGANE_DON foreign key (id_organe) references ORGANE(id),
-    primary key (id, id_donneur, id_organe)
+    primary key (id_donneur,id_organe)#(id, id_donneur, id_organe)
 );
 
 create table BESOIN(
@@ -174,6 +174,20 @@ VALUES ('maximePatient','$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZ
 INSERT INTO APP_USER(sso_id, password, first_name, last_name, email, state, birthday)
 VALUES ('docteur','$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZYChRm', 'Maxime','Docteur','doc@xyz.com', 'Active', '1995-05-22');
  
+ INSERT INTO ORGANE (organe)
+ values ('rein');
+ 
+  INSERT INTO ORGANE (organe)
+ values ('coeur');
+ 
+  INSERT INTO ORGANE (organe)
+ values ('foie');
+ 
+  INSERT INTO ORGANE (organe)
+ values ('peau');
+ 
+  INSERT INTO ORGANE (organe)
+ values ('poumon');
  
  
 /* Populate JOIN Table */
