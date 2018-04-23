@@ -120,14 +120,13 @@ create table DON(
 );
 
 create table BESOIN(
-	id int not null auto_increment,
+	#id int not null auto_increment,
     id_organe int,
     id_patient bigint,
-    id_typeSang int,
     constraint FK_ORGANE_BESOIN foreign key (id_organe) references ORGANE(id),
     constraint FK_PATIENT_BEOSIN foreign key (id_patient) REFERENCES PATIENT (id_personne),
     rank int NOT NULL,
-    primary key (id, id_organe, id_patient)
+    primary key (id_organe, id_patient) #(id, id_organe, id_patient)
 );
 
 
