@@ -28,6 +28,7 @@ import com.websystique.springsecurity.model.RegisterDon;
 import com.websystique.springsecurity.model.RegisterPatient;
 import com.websystique.springsecurity.model.User;
 import com.websystique.springsecurity.model.UserProfile;
+import com.websystique.springsecurity.model.UserProfileType;
 import com.websystique.springsecurity.service.BesoinService;
 import com.websystique.springsecurity.service.DocteurService;
 import com.websystique.springsecurity.service.DonService;
@@ -263,7 +264,17 @@ public class DocteurController {
 	@ModelAttribute("roles")
 	public List<UserProfile> initializeProfiles() {
 		//TODO Un docteur ne devrait pas pouvoir set tous les roles
-		return userProfileService.findAll();
+		List<UserProfile> list = userProfileService.findAll();
+		UserProfile up = null;
+		for (UserProfile userProfile : list) {
+			if(userProfile.getType().equals(UserProfileType.PATIENT.toString()))
+				up = userProfile;
+		}
+		
+		list.removeAll(list);
+		list.add(up);
+		
+		return list;
 	}
 
 }
