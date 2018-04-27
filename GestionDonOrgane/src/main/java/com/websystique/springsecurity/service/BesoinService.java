@@ -16,5 +16,7 @@ public interface BesoinService {
 	void save(Besoin don, int patientId, int organeId);
 	
 	void save(Besoin don, String patientSSO, int organeId);
+
+	List<Besoin> getBesoins(int id);
 	
 }

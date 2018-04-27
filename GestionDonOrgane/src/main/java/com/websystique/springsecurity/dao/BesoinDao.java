@@ -12,5 +12,9 @@ public interface BesoinDao {
 		Besoin findById(BesoinId id);
 		
 		List<Besoin> findAll();
+
+		void save(Besoin besoin, int organeId);
+
+		List<Besoin> getBesoins(int idPatient);
 		
 }

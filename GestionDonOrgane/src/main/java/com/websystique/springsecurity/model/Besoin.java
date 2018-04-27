@@ -29,14 +29,21 @@ public class Besoin {
 	private Organe organe;
 	
 	@Column(name="rank", nullable=false)
-	private int dateDon;
+	private int rank;
 
+	
 	public Patient getPatient() {
 		return patient;
 	}
 
 	public void setPatient(Patient patient) {
+		//if(this.patient != null)
+		//	this.patient.getBesoins().remove(this);
+		
 		this.patient = patient;
+//		if(!patient.getBesoins().contains(this)) {
+//			patient.getBesoins().add(this);
+//		}
 	}
 
 	public Organe getOrgane() {
@@ -47,12 +54,12 @@ public class Besoin {
 		this.organe = organe;
 	}
 
-	public int getDateDon() {
-		return dateDon;
+	public int getRank() {
+		return rank;
 	}
 
-	public void setDateDon(int dateDon) {
-		this.dateDon = dateDon;
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 	
 	

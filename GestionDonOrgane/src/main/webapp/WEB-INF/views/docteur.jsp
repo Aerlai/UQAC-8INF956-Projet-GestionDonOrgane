@@ -44,6 +44,32 @@
 		<article class="success">
 			<p><a href="<c:url value='/newPatient' />">Créer un nouveau patient</a></p>
 		</article>
+		
+		<h2>Liste des patients</h2>
+		<arcticle>
+		<table class="table table-over">
+	<thead>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+  <c:forEach items="${patients}" var="patient">
+    <tr>
+      <td><c:out value="${patient.firstName}" /></td>
+      <td><c:out value="${patient.lastName}" /></td>
+      <td> 
+      	<a href="<c:url value='/patient/ajouterBesoin/${patient.id}' />"> Ajouter Besoin</a>
+      	<a href="<c:url value='/patient/details/${patient.id}' />"> Détail</a>
+      </td>
+    </tr>
+  </c:forEach>
+</table>
+		</arcticle>
 	</section>
+	
+	
+	
 </body>
 </html>

@@ -8,4 +8,6 @@ public interface DocteurService {
 	
 	Docteur findById(int id);
 	
+	Docteur findBySso(String sso);
+	
 }

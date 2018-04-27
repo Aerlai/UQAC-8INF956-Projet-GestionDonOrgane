@@ -13,9 +13,6 @@ import com.websystique.springsecurity.dao.OrganeDao;
 import com.websystique.springsecurity.dao.PatientDao;
 import com.websystique.springsecurity.model.Besoin;
 import com.websystique.springsecurity.model.BesoinId;
-import com.websystique.springsecurity.model.Don;
-import com.websystique.springsecurity.model.DonId;
-import com.websystique.springsecurity.model.Donneur;
 import com.websystique.springsecurity.model.Organe;
 import com.websystique.springsecurity.model.Patient;
 
@@ -53,7 +50,7 @@ public class BesoinServiceImpl implements BesoinService{
 		besoin.setPatient(d);
 		besoin.setOrgane(o);
 		
-		dao.save(besoin);
+		dao.save(besoin, organeId);
 	}
 	
 	public void save(Besoin besoin, String patientSSO, int organeId) {
@@ -63,6 +60,12 @@ public class BesoinServiceImpl implements BesoinService{
 		besoin.setOrgane(o);
 		
 		dao.save(besoin);
+	}
+
+
+	public List<Besoin> getBesoins(int idPatient) {
+		
+		return dao.getBesoins(idPatient);
 	}
 
 }

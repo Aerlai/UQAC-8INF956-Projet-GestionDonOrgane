@@ -22,4 +22,8 @@ public class DocteurServiceImpl implements DocteurService{
 		return dao.findById(id);
 	}
 	
+	public Docteur findBySso(String sso) {
+		return dao.findBySso(sso);
+	}
+	
 }

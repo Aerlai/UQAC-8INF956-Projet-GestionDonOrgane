@@ -8,4 +8,5 @@ public interface DocteurDao {
 	
 	Docteur findById(int id);
 	
+	Docteur findBySso(String sso);
 }

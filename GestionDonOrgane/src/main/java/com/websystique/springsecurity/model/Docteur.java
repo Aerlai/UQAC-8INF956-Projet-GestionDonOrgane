@@ -1,6 +1,9 @@
 package com.websystique.springsecurity.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,6 +45,25 @@ public class Docteur extends User{
 //	@OneToOne(cascade=CascadeType.PERSIST)
 //	@JoinColumn(name="id_adresse")
 //	private Adresse adresse;
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="docteur", cascade = CascadeType.MERGE)
+	private Collection<Patient> patients = new ArrayList<Patient>();
+	
+	
+	
+	
+	public Collection<Patient> getPatients() {
+		return new ArrayList<>(patients);
+	}
+	
+	public void addPatient(Patient p) {
+		if(patients.contains(p)) return;
+		
+		this.patients.add(p);
+		if(p.getDocteur() != this) {
+			p.setDocteur(this);
+		}
+	}
 
 	public Hopital getHopital() {
 		return hopital;

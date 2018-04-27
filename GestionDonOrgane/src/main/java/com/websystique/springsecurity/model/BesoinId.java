@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 
 public class BesoinId implements Serializable {
 	
-	@Id @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)  @JoinColumn(name="id_patient")
+	@Id @ManyToOne @JoinColumn(name="id_patient") //(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)  @JoinColumn(name="id_patient")
 	private Patient patient;
 	
 	@Id @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER) @JoinColumn(name="id_organe")

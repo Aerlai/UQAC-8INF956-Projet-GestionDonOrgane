@@ -1,5 +1,7 @@
 package com.websystique.springsecurity.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,8 +26,11 @@ public class Patient extends User{
 	@Column(name="groupe_sang",columnDefinition="VARCHAR(3)")
 	private String groupe_sang;
 	
-//	@Column(name="id_docteur")
-//	private int id_docteur;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="id_docteur")
+	private Docteur docteur;
 //	
 //	@Column(name="id_hopital")
 //	private int id_hopital;
@@ -34,6 +39,22 @@ public class Patient extends User{
 	@JoinColumn(name="id_adresse")
 	private Adresse adresse;
 	
+//	@OneToMany(fetch = FetchType.EAGER, mappedBy="patient", cascade = CascadeType.MERGE)
+//	private Set<Besoin> besoins = new HashSet<Besoin>();
+//	
+//	public Set<Besoin> getBesoins() {
+//		return new HashSet<>(besoins);
+//	}
+//	
+//	public void addBesoins(Besoin b) {
+//		if(besoins.contains(b)) return;
+//		
+//		this.besoins.add(b);
+//		if(b.getPatient() != this) {
+//			b.setPatient(this);
+//		}
+//	}
+
 	public String getGroupe_sang() {
 		return groupe_sang;
 	}
@@ -42,13 +63,8 @@ public class Patient extends User{
 		this.groupe_sang = groupe_sang;
 	}
 	
-//	public int getId_docteur() {
-//		return id_docteur;
-//	}
-//	
-//	public void setId_docteur(int id_docteur) {
-//		this.id_docteur = id_docteur;
-//	}
+
+	
 //	
 //	public int getId_hopital() {
 //		return id_hopital;
@@ -58,6 +74,20 @@ public class Patient extends User{
 //		this.id_hopital = id_hopital;
 //	}
 	
+	public Docteur getDocteur() {
+		return docteur;
+	}
+
+	public void setDocteur(Docteur docteur) {
+		if(this.docteur != null)
+			this.docteur.getPatients().remove(this);
+		
+		this.docteur = docteur;
+		if(!docteur.getPatients().contains(this)) {
+			docteur.getPatients().add(this);
+		}
+	}
+
 	public Adresse getAdresse() {
 	    return adresse;
 	  }
