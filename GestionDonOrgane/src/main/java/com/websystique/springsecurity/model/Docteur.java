@@ -2,22 +2,20 @@ package com.websystique.springsecurity.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "DOCTEUR")
@@ -37,9 +35,12 @@ public class Docteur extends User{
 	
 	@ManyToOne//(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_hopital")
+	@NotNull
 	private Hopital hopital;
 	
 	@Column(name="specialite",columnDefinition="VARCHAR(30)",nullable=false)
+	@NotEmpty
+	@Size(max=30)
 	private String specialite;
 	
 //	@OneToOne(cascade=CascadeType.PERSIST)

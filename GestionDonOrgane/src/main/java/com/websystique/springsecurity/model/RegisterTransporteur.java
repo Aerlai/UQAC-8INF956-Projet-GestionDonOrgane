@@ -1,8 +1,13 @@
 package com.websystique.springsecurity.model;
 
+import javax.validation.Valid;
+
 public class RegisterTransporteur {
 
+	@Valid
 	private Adresse adresse;
+	
+	@Valid
 	private Transporteur transporteur;
 	
 	public Adresse getAdresse() {

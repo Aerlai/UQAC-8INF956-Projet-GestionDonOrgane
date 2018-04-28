@@ -17,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -45,6 +46,7 @@ public class User {
 
 	@NotEmpty
 	@Column(name="EMAIL", nullable=false)
+	@Email
 	private String email;
 	
 

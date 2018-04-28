@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "PATIENT")
@@ -24,36 +27,19 @@ import javax.persistence.Table;
 public class Patient extends User{
 	
 	@Column(name="groupe_sang",columnDefinition="VARCHAR(3)")
+	@NotEmpty
+	@Size(max=3, min=2)
 	private String groupe_sang;
-	
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name="id_docteur")
 	private Docteur docteur;
-//	
-//	@Column(name="id_hopital")
-//	private int id_hopital;
+
 	
 	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_adresse")
 	private Adresse adresse;
 	
-//	@OneToMany(fetch = FetchType.EAGER, mappedBy="patient", cascade = CascadeType.MERGE)
-//	private Set<Besoin> besoins = new HashSet<Besoin>();
-//	
-//	public Set<Besoin> getBesoins() {
-//		return new HashSet<>(besoins);
-//	}
-//	
-//	public void addBesoins(Besoin b) {
-//		if(besoins.contains(b)) return;
-//		
-//		this.besoins.add(b);
-//		if(b.getPatient() != this) {
-//			b.setPatient(this);
-//		}
-//	}
 
 	public String getGroupe_sang() {
 		return groupe_sang;

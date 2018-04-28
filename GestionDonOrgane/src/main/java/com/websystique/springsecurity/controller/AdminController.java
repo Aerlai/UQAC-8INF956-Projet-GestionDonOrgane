@@ -144,29 +144,14 @@ public class AdminController {
 	public String saveRegistration(@Valid @ModelAttribute("registerHopital") RegisterHopital registerHopital, BindingResult result, Model model) { //@ModelAttrbite('User')User user, BindingResult resultUser, 
 		//@ModelAttribute('UserProfile')UserProfile userProfile, BindingResult resultProfile
 
+		boolean b = result.hasGlobalErrors();
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
-			return "newpatient";
+			return "newhopital";
 		}
 		Hopital hopital = registerHopital.getHopital();
 		hopital.setAdresse(registerHopital.getAdresse());
-		
-		//userService.save(user);
-		//patientService.save(registerPatient.getPatient());
 		hopitalService.save(hopital);
-		
-//		System.out.println("First Name : "+user.getFirstName());
-//		System.out.println("Last Name : "+user.getLastName());
-//		System.out.println("SSO ID : "+user.getSsoId());
-//		System.out.println("Password : "+user.getPassword());
-//		System.out.println("Email : "+user.getEmail());
-//		System.out.println("Birthday : "+user.getBirthday());
-//		System.out.println("Checking UsrProfiles....");
-//		if(user.getUserProfiles()!=null){
-//			for(UserProfile profile : user.getUserProfiles()){
-//				System.out.println("Profile : "+ profile.getType());
-//			}
-//		}
 		
 		model.addAttribute("success", "Hopital " + hopital.getNom() + " has been registered successfully");
 		return "registrationsuccess";
@@ -239,34 +224,17 @@ public class AdminController {
 	 * also validates the user input
 	 */
 	@RequestMapping(value = "/registerNewDocteur", method = RequestMethod.POST)
-	public String saveRegistration(@Valid @ModelAttribute("registerDocteur") RegisterDocteur registerDocteur, BindingResult result, Model model) { //@ModelAttrbite('User')User user, BindingResult resultUser, 
-		//@ModelAttribute('UserProfile')UserProfile userProfile, BindingResult resultProfile
+	public String saveRegistration(@Valid @ModelAttribute("registerDocteur") RegisterDocteur registerDocteur, BindingResult result, Model model) { 
 
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
+			model.addAttribute("hopitaux", hopitalService.findAll());
 			return "newdocteur";
 		}
 		//TODO POUR TOUS LES REGISTER : VERIFIER QUE C'EST TOUT BON
 		//TODO PAS BESOIN DE REGISTERDOCTEUR EN FAIT
 		Docteur docteur = registerDocteur.getDocteur();
-		//docteur.setHopital(registerDocteur.getHopital());
-		
-		//userService.save(user);
-		//patientService.save(registerPatient.getPatient());
 		docteurService.save(docteur);
-		
-//		System.out.println("First Name : "+user.getFirstName());
-//		System.out.println("Last Name : "+user.getLastName());
-//		System.out.println("SSO ID : "+user.getSsoId());
-//		System.out.println("Password : "+user.getPassword());
-//		System.out.println("Email : "+user.getEmail());
-//		System.out.println("Birthday : "+user.getBirthday());
-//		System.out.println("Checking UsrProfiles....");
-//		if(user.getUserProfiles()!=null){
-//			for(UserProfile profile : user.getUserProfiles()){
-//				System.out.println("Profile : "+ profile.getType());
-//			}
-//		}
 		
 		model.addAttribute("success", "Docteur " + docteur.getFirstName() + " has been registered successfully");
 		return "registrationsuccess";

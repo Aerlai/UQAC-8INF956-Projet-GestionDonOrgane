@@ -4,12 +4,18 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class RegisterDon {
-	
+	@Valid
 	private  Set<Organe> listeDon;
 	
+	@Valid
 	private Donneur donneur;
 	
+	@Valid
 	private Date dateDon;
 
 	public Set<Organe> getListeDon() {

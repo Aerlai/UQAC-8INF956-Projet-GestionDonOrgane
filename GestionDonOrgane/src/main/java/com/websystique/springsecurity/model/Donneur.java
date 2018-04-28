@@ -18,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "DONNEUR")
@@ -27,9 +30,12 @@ public class Donneur {
 	private int id;
 	
 	@Column(name="nom",columnDefinition="VARCHAR(30)", nullable=false)
+	@Size(max=30, message="30 caractères maximum")
+	@NotEmpty
 	private String nom;
 	
 	@Column(name="groupe_sang",columnDefinition="VARCHAR(3)")
+	@Size(min=2, max=3, message="2 caractères minimum, 3 caratères maximum")
 	private String groupe_sang;
 	
 	

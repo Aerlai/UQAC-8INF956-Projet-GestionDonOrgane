@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="TRANSPORTEUR")
@@ -28,9 +32,14 @@ public class Transporteur {
 	private int id;
 	
 	@Column(name="nom",columnDefinition="VARCHAR(30)", nullable=false)
+	@NotEmpty
+	@Size(max=30)
 	private String nom;
 	
 	@Column(name="email",columnDefinition="VARCHAR(30)", nullable=false)
+	@Email
+	@NotEmpty
+	@Size(max=30)
 	private String email;
 	
 	@OneToOne(cascade=CascadeType.PERSIST)

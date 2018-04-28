@@ -109,7 +109,7 @@ public class DocteurController {
     public String ajouterBesoin(@ModelAttribute("RegisterBesoin") RegisterBesoin registerBesoin, @PathVariable Integer id, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
-			return "/patient/ajouterBesoin/"+id+".html";
+			return "/patient/ajouterBesoin/"+id;
 		}
 		
 		//Patient p = patientService.findById(id);
@@ -140,7 +140,7 @@ public class DocteurController {
 
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
-			return "newuser";
+			return "newpatient";
 		}
 		registerPatient.getPatient().setAdresse(registerPatient.getAdresse());
 		Docteur moi = docteurService.findBySso(getPrincipal());
@@ -230,7 +230,9 @@ public class DocteurController {
 	public String saveRegistration(@Valid @ModelAttribute("registerDon") RegisterDon registerDon, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-			System.out.println("There are errors");
+//			System.out.println("There are errors");
+//			model.addAttribute("registerDon", registerDon);
+//			model.addAttribute("organes",organeService.findAll());
 			return "newdon";
 		}
 		

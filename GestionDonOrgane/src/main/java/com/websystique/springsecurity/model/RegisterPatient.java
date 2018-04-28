@@ -1,9 +1,14 @@
 package com.websystique.springsecurity.model;
 
+import javax.validation.Valid;
+
 public class RegisterPatient {
 
 
+	@Valid
 	private Adresse adresse;
+	
+	@Valid
 	private Patient patient;
 	
 	public Adresse getAdresse() {

@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -35,31 +36,36 @@ public class Adresse {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	@NotEmpty
+	@NotEmpty(message="Entrez votre adresse")
+	@Size(max=120, message="120 caractères maximum. Divisez avec les autres champs")
 	@Column(name="Address1", nullable=false, columnDefinition="VARCHAR(120)")
 	private String Address1;
 	
+	@Size(max=120, message="120 caractères maximum. Divisez avec les autres champs")
 	@Column(name="Address2", nullable=true, columnDefinition="VARCHAR(120)")
 	private String Address2;
 		
-	
+	@Size(max=120, message="120 caractères maximum. Divisez avec les autres champs")
 	@Column(name="Address3", nullable=true, columnDefinition="VARCHAR(120)")
 	private String Address3;
 
-	@NotEmpty
+	@NotEmpty(message = "Entrez votre nom de ville")
+	@Size(max=100)
 	@Column(name="City", nullable=false, columnDefinition="VARCHAR(100)")
 	private String City;
 
-	
+	@Size(max=2, message = "Doit être en deux lettres (ex : Québec = QC)")
 	@Column(name="State", nullable=true)
 	private String State;
 	
 
-	@NotEmpty
+	@NotEmpty(message = "Entrez votre indicatif pays")
+	@Size(min=2, max=2, message="Doit être en deux lettres (ex : Canada = CA)")
 	@Column(name="Country", nullable=false, columnDefinition="VARCHAR(2)")
 	private String Country;
 
 	@NotEmpty
+	@Size(max=16, message="Maximum 16 lettres")
 	@Column(name="PostalCode", nullable=false, columnDefinition="VARCHAR(16)")
 	private String PostalCode;
 	

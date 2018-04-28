@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="HOPITAL")
@@ -27,10 +32,16 @@ public class Hopital {
 	private int id;
 	
 	@Column(name="nom",columnDefinition="VARCHAR(30)", nullable=false)
+	@Size(max=30)
+	@NotEmpty
 	private String nom;
 	
 	@Column(name="email",columnDefinition="VARCHAR(30)", nullable=false)
+	@Email
+	@Size(max=30)
+	@NotEmpty
 	private String email;
+	
 	
 	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_adresse")

@@ -16,16 +16,18 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 @Entity
 @Table(name = "DON")
 @IdClass(DonId.class)
 public class Don {
 	
-	
+	@Valid
 	@Id //@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)  @JoinColumn(name="id_donneur")  @MapsId("donneur")
 	private Donneur donneur;
 	
+	@Valid
 	@Id //@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER) @JoinColumn(name="id_organe") @MapsId("organe")
 	private Organe organe;
 	
