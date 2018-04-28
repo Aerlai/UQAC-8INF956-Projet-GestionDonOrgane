@@ -70,12 +70,16 @@
 			</div>
 		</div>
 
+		
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
 				<div class="col-md-7">
 					<form:input type="text" path="docteur.ssoId" id="ssoId" class="form-control input-sm"/>
 					<div class="has-error">
+						<c:if test="${not empty error}">
+						   <p style="color: red;">${error}</p>
+						</c:if>
 						<form:errors path="docteur.ssoId" class="help-inline"/>
 					</div>
 				</div>

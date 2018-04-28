@@ -22,5 +22,11 @@ public class TransporteurServiceImpl implements TransporteurService{
 	public Transporteur findById(int id) {
 		return dao.findById(id);
 	}
+
+	
+	public Transporteur findByName(String nom) {
+		
+		return dao.findByName(nom);
+	}
 	
 }

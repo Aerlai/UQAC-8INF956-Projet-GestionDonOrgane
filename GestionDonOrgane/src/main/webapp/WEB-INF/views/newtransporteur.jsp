@@ -54,6 +54,9 @@
 						<div class="col-md-7">
 							<form:input type="text" path="transporteur.Nom" id="name" class="form-control input-sm"/>
 							<div class="has-error">
+							<c:if test="${not empty error}">
+							   <p style="color: red;">${error}</p>
+							</c:if>
 								<form:errors path="transporteur.nom" class="help-inline"/>
 							</div>
 						</div>

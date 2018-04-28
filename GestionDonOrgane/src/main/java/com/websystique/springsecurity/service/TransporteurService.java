@@ -7,5 +7,7 @@ public interface TransporteurService {
 	void save(Transporteur transporteur);
 	
 	Transporteur findById(int id);
+
+	Transporteur findByName(String nom);
 	
 }

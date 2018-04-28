@@ -106,10 +106,23 @@ public class DocteurController {
     }
 	
 	@RequestMapping(value="/patient/ajouterBesoin/{id}", method=RequestMethod.POST)
-    public String ajouterBesoin(@ModelAttribute("RegisterBesoin") RegisterBesoin registerBesoin, @PathVariable Integer id, BindingResult result, Model model) {
-		if (result.hasErrors()) {
+    public ModelAndView ajouterBesoin(@ModelAttribute("RegisterBesoin") RegisterBesoin registerBesoin, @PathVariable Integer id, BindingResult result, Model model) {
+		//Ne devrait pas arriver
+		//		if (result.hasErrors()) {
+//			System.out.println("There are errors");
+//			//return "patient/ajouterBesoin/"+id;
+//		}
+		if(registerBesoin.getListeBesoin() == null ||  registerBesoin.getListeBesoin().isEmpty())
+		{
 			System.out.println("There are errors");
-			return "/patient/ajouterBesoin/"+id;
+			ModelAndView modelAndView = new ModelAndView("ajouterBesoin");
+			modelAndView.addObject("registerBesoin", registerBesoin);
+	        modelAndView.addObject("patient",patientService.findById(id));
+	        modelAndView.addObject("organes",organeService.findAll());
+			modelAndView.addAllObjects(model.asMap());
+			model.addAttribute("error", "Selectionner au moins un organe");
+			return modelAndView;
+			//return "patient/ajouterBesoin/"+id;
 		}
 		
 		//Patient p = patientService.findById(id);
@@ -117,8 +130,6 @@ public class DocteurController {
 		//TODO Faire une classe avec besoin & co ?
 		for (Organe organe : registerBesoin.getListeBesoin()) {
 			Besoin besoin = new Besoin();
-			//besoin.setOrgane(organe);
-			//besoin.setPatient(p);
 			//TODO Changer le rank
 			besoin.setRank(0);
 			besoinService.save(besoin, id, organe.getId());
@@ -126,7 +137,7 @@ public class DocteurController {
 		}
 		
 		model.addAttribute("success", "Besoin ajouté avec succès");
-		return "registrationsuccess";
+		return new ModelAndView("registrationsuccess");
    }
 
 
@@ -142,6 +153,13 @@ public class DocteurController {
 			System.out.println("There are errors");
 			return "newpatient";
 		}
+		
+		if(userService.findBySso(registerPatient.getPatient().getSsoId()) != null) {
+			System.out.println("SsoID déjà utilisé");
+			model.addAttribute("error", "Le SSOID est déjà utilisé");
+			return "newpatient";
+		}
+		
 		registerPatient.getPatient().setAdresse(registerPatient.getAdresse());
 		Docteur moi = docteurService.findBySso(getPrincipal());
 		registerPatient.getPatient().setDocteur(moi);
@@ -227,13 +245,23 @@ public class DocteurController {
 	 * also validates the user input
 	 */
 	@RequestMapping(value = "/registerNewDon", method = RequestMethod.POST)
-	public String saveRegistration(@Valid @ModelAttribute("registerDon") RegisterDon registerDon, BindingResult result, Model model) {
+	public ModelAndView saveRegistration(@Valid @ModelAttribute("registerDon") RegisterDon registerDon, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-//			System.out.println("There are errors");
-//			model.addAttribute("registerDon", registerDon);
-//			model.addAttribute("organes",organeService.findAll());
-			return "newdon";
+			System.out.println("There are errors");
+			model.addAttribute("organes",organeService.findAll());
+			return new ModelAndView("newdon");
+		}
+		if(registerDon.getListeDon() == null ||  registerDon.getListeDon().isEmpty())
+		{
+			System.out.println("There are errors");
+			ModelAndView modelAndView = new ModelAndView("newdon");
+			modelAndView.addObject("registerDon", registerDon);
+	        modelAndView.addObject("organes",organeService.findAll());
+			modelAndView.addAllObjects(model.asMap());
+			model.addAttribute("error", "Selectionner au moins un organe");
+			return modelAndView;
+			//return "patient/ajouterBesoin/"+id;
 		}
 		
 		Donneur donneur = registerDon.getDonneur();
@@ -249,7 +277,7 @@ public class DocteurController {
 		
 		
 		model.addAttribute("success", "Donneur " + donneur.getNom() + " has been registered successfully");
-		return "registrationsuccess";
+		return new ModelAndView("registrationsuccess");
 	}
 	private String getPrincipal(){
 		String userName = null;

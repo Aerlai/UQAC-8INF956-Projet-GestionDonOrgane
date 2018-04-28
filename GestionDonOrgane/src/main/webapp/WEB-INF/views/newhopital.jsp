@@ -54,12 +54,14 @@
 				<div class="col-md-7">
 					<form:input type="text" path="hopital.Nom" id="name" class="form-control input-sm"/>
 					<div class="has-error">
+						<c:if test="${not empty error}">
+						   <p style="color: red;">${error}</p>
+						</c:if>
 						<form:errors path="hopital.nom" class="help-inline"/>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		
 
 		<div class="row">

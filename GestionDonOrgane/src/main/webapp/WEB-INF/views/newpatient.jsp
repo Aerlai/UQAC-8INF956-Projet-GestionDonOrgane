@@ -78,6 +78,9 @@
 						<div class="col-md-7">
 							<form:input type="text" path="patient.ssoId" id="ssoId" class="form-control input-sm"/>
 							<div class="has-error">
+								<c:if test="${not empty error}">
+								   <p style="color: red;">${error}</p>
+								</c:if>
 								<form:errors path="patient.ssoId" class="help-inline"/>
 							</div>
 						</div>

@@ -44,6 +44,9 @@
 		<article class="success">
 			<p><a href="<c:url value='/newPatient' />">Créer un nouveau patient</a></p>
 		</article>
+		<article class="success">
+			<p><a href="<c:url value='/newDon' />">Créer un nouveau don</a></p>
+		</article>
 		
 		<h2>Liste des patients</h2>
 		<arcticle>

@@ -30,6 +30,9 @@
 				<div class="col-md-7">
 					<form:select path="listeBesoin" items="${organes}" multiple="true" itemValue="id" itemLabel="organe" class="form-control input-sm"/>
 					<div class="has-error">
+						<c:if test="${not empty error}">
+						   <p style="color: red;">${error}</p>
+						</c:if>
 						<form:errors path="listeBesoin" class="help-inline"/>
 					</div>
 				</div>

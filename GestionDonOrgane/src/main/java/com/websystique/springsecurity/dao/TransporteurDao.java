@@ -7,4 +7,6 @@ public interface TransporteurDao {
 		void save(Transporteur transporteur);
 		
 		Transporteur findById(int id);
+
+		Transporteur findByName(String nom);
 }

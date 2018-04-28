@@ -82,6 +82,13 @@ public class AdminController {
 			System.out.println("There are errors");
 			return "newuser";
 		}
+		
+		if(userService.findBySso(user.getSsoId()) != null) {
+			System.out.println("SsoID déjà utilisé");
+			model.addAttribute("error", "Le SSOID est déjà utilisé");
+			return "newuser";
+		}
+		
 		userService.save(user);
 		
 		System.out.println("First Name : "+user.getFirstName());
@@ -144,11 +151,18 @@ public class AdminController {
 	public String saveRegistration(@Valid @ModelAttribute("registerHopital") RegisterHopital registerHopital, BindingResult result, Model model) { //@ModelAttrbite('User')User user, BindingResult resultUser, 
 		//@ModelAttribute('UserProfile')UserProfile userProfile, BindingResult resultProfile
 
-		boolean b = result.hasGlobalErrors();
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
 			return "newhopital";
 		}
+		
+		if(hopitalService.findByName(registerHopital.getHopital().getNom()) != null) {
+			System.out.println("nom déjà utilisé");
+			model.addAttribute("error", "Le nom est déjà utilisé");
+			return "newhopital";
+		}
+		
+		
 		Hopital hopital = registerHopital.getHopital();
 		hopital.setAdresse(registerHopital.getAdresse());
 		hopitalService.save(hopital);
@@ -178,6 +192,12 @@ public class AdminController {
 
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
+			return "newtransporteur";
+		}
+		
+		if(transporteurService.findByName(registerTransporteur.getTransporteur().getNom()) != null) {
+			System.out.println("nom déjà utilisé");
+			model.addAttribute("error", "Le nom est déjà utilisé");
 			return "newtransporteur";
 		}
 		//TODO POUR TOUS LES REGISTER : VERIFIER QUE C'EST TOUT BON
@@ -228,6 +248,13 @@ public class AdminController {
 
 		if (result.hasErrors()) {
 			System.out.println("There are errors");
+			model.addAttribute("hopitaux", hopitalService.findAll());
+			return "newdocteur";
+		}
+		
+		if(userService.findBySso(registerDocteur.getDocteur().getSsoId()) != null) {
+			System.out.println("SsoID déjà utilisé");
+			model.addAttribute("error", "Le SSOID est déjà utilisé");
 			model.addAttribute("hopitaux", hopitalService.findAll());
 			return "newdocteur";
 		}

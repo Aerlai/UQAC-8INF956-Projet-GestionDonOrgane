@@ -43,6 +43,9 @@
 			</div>
 		</div>
 
+		<c:if test="${not empty error}">
+		   ${error}
+		</c:if>
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
