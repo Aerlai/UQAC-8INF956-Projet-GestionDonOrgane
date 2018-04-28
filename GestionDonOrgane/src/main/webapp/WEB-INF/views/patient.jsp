@@ -40,8 +40,30 @@
 		</ul>
 	</nav>
 	<section>
+		<h2>${patient.firstName} ${patient.lastName}</h2>
 		<article class="success">
-			<strong>${user}</strong>, Votre groupe sanguin est ${sang}.
+			<p>Date de naissance : ${patient.birthday}</p>
+			<p>Email : ${patient.email}</p>
+			<p>Groupe sanguain : ${patient.groupe_sang}</p>
+			<p>Docteur : Docteur ${patient.docteur.lastName}</p>
+		</article>
+
+		<h2>Etat besoins</h2>
+		<article class="success">
+			<table class="table table-over">
+				<thead>
+			      <tr>
+			        <th>Organe</th>
+			        <th>Rang</th>
+			      </tr>
+			    </thead>
+			  <c:forEach items="${besoins}" var="besoin">
+			    <tr>
+			      <td><c:out value="${besoin.organe.organe}" /></td>
+			      <td><c:out value="${besoin.rank}" /></td>
+			    </tr>
+			  </c:forEach>
+			</table>
 		</article>
 	</section>
 </body>

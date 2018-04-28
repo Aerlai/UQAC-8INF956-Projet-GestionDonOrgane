@@ -47,5 +47,6 @@
 			<p><a href="<c:url value='/newTransporteur' />">Créer un nouveau transporteur</a></p>
 		</article>
 	</section>
+	
 </body>
 </html>
