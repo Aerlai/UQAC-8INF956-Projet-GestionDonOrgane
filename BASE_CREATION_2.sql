@@ -193,17 +193,3 @@ VALUES ('docteur','$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZYChRm'
 INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
   SELECT user.id, profile.id FROM app_user user, user_profile profile
   where user.sso_id='sam' and profile.type='ADMIN';
-  
-INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
-  SELECT user.id, profile.id FROM app_user user, user_profile profile
-  where user.sso_id='maximePatient' and profile.type='PATIENT';
-
-INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
-  SELECT user.id, profile.id FROM app_user user, user_profile profile
-  where user.sso_id='docteur' and profile.type='DOCTEUR';
-
-INSERT INTO ADRESSE (Address1, City, Country, PostalCode)
-VALUES ('boul Universite', 'Chicoutimi', 'CA', 'POSTCODE');
-
-INSERT INTO PATIENT (id_personne, groupe_sang, id_adresse)
-VALUES (2, 'AB+', 1);
