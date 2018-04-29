@@ -17,3 +17,4 @@ Nous avons utilisé MySQL Community afin de créer un serveur de BD local grâce
 
 Vous devez renseigner les informations de connections à la BD dans le fichier ***application.properties***.
 
+Le login de base de l'application est : sam / abc125
