@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.websystique.springsecurity.model.Besoin;
+import com.websystique.springsecurity.model.BesoinId;
 import com.websystique.springsecurity.model.Docteur;
 import com.websystique.springsecurity.model.Don;
 import com.websystique.springsecurity.model.Donneur;
@@ -123,6 +124,23 @@ public class DocteurController {
 			model.addAttribute("error", "Selectionner au moins un organe");
 			return modelAndView;
 			//return "patient/ajouterBesoin/"+id;
+		}
+		
+		Patient p = patientService.findById(id);
+		for (Organe organe : registerBesoin.getListeBesoin()) {
+			BesoinId bID = new BesoinId();
+			bID.setOrgane(organe);
+			bID.setPatient(p);
+			if(besoinService.findById(bID) != null) {
+				System.out.println("There are errors");
+				ModelAndView modelAndView = new ModelAndView("ajouterBesoin");
+				modelAndView.addObject("registerBesoin", registerBesoin);
+		        modelAndView.addObject("patient",patientService.findById(id));
+		        modelAndView.addObject("organes",organeService.findAll());
+				modelAndView.addAllObjects(model.asMap());
+				model.addAttribute("error", "Le patient est déjà en attente pour l'organe "+organe.getOrgane());
+				return modelAndView;
+			}
 		}
 		
 		//Patient p = patientService.findById(id);
