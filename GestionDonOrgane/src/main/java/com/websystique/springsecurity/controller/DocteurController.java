@@ -180,7 +180,7 @@ public class DocteurController {
 			}
 		}
 		
-		model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
+		model.addAttribute("success", "Le patient " + user.getFirstName() + " a été enregistré avec succès");
 		return "registrationsuccess";
 	}
 	
@@ -224,7 +224,7 @@ public class DocteurController {
 //			}
 //		}
 		
-		model.addAttribute("success", "Donneur " + donneur.getNom() + " has been registered successfully");
+		model.addAttribute("success", "Le donneur " + donneur.getNom() + " a été enregistré avec succès");
 		return "registrationsuccess";
 	}
 	
@@ -276,7 +276,7 @@ public class DocteurController {
 		//userService.save(user);
 		
 		
-		model.addAttribute("success", "Donneur " + donneur.getNom() + " has been registered successfully");
+		model.addAttribute("success", "Le don a été enregistré avec succès");
 		return new ModelAndView("registrationsuccess");
 	}
 	private String getPrincipal(){

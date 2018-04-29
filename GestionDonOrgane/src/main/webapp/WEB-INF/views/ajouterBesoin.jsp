@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Besoin Registration Form</title>
+	<title>Formulaire de création d'un nouveau besoin</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -15,7 +15,7 @@
 
  	<div class="form-container">
  	
- 	<h1>New Besoin Registration Form</h1>
+ 	<h1>Création d'un nouveau besoin</h1>
 
 
 	<h2> Patient : ${patient.firstName} ${patient.lastName} </h2>

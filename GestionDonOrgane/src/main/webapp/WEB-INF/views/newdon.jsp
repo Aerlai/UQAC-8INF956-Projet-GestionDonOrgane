@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Donneur Registration Form</title>
+	<title>Formulaire de création de don</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -15,7 +15,7 @@
 
  	<div class="form-container">
  	
- 	<h1>New Donneur Registration Form</h1>
+ 	<h1>Création d'un nouveau don</h1>
 
 	<form:form method="POST" action="registerNewDon" commandName="registerDon" class="form-horizontal">
 		
@@ -75,7 +75,7 @@
 
 		<div class="row">
 			<div class="form-actions floatRight">
-				<input type="submit" value="Register" class="btn btn-primary btn-sm"> or <a href="<c:url value='/docteur' />">Cancel</a>
+				<input type="submit" value="Valider" class="btn btn-primary btn-sm"> ou <a href="<c:url value='/docteur' />">Annuler</a>
 			</div>
 		</div>
 	</form:form>

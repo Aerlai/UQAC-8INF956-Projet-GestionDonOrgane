@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Docteur Registration Form</title>
+	<title>Formulaire de création de docteur</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -43,12 +43,12 @@
 	</nav>
 	<section>
 		<article class="form-container">
-			<h1>New Docteur Registration Form</h1>
+			<h1>Création de docteur</h1>
 
 	<form:form method="POST" action="registerNewDocteur" commandName="registerDocteur" class="form-horizontal">
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="firstName">First Name</label>
+				<label class="col-md-3 control-lable" for="firstName">Prénom</label>
 				<div class="col-md-7">
 					<form:input type="text" path="docteur.firstName" id="firstName" class="form-control input-sm"/>
 					<div class="has-error">
@@ -60,7 +60,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="lastName">Last Name</label>
+				<label class="col-md-3 control-lable" for="lastName">Nom</label>
 				<div class="col-md-7">
 					<form:input type="text" path="docteur.lastName" id="lastName" class="form-control input-sm"/>
 					<div class="has-error">
@@ -73,7 +73,7 @@
 		
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
+				<label class="col-md-3 control-lable" for="ssoId">Login</label>
 				<div class="col-md-7">
 					<form:input type="text" path="docteur.ssoId" id="ssoId" class="form-control input-sm"/>
 					<div class="has-error">
@@ -88,7 +88,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="password">Password</label>
+				<label class="col-md-3 control-lable" for="password">Mot de passe</label>
 				<div class="col-md-7">
 					<form:input type="password" path="docteur.password" id="password" class="form-control input-sm"/>
 					<div class="has-error">
@@ -112,7 +112,7 @@
 		
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="birthday">Birthday</label>
+				<label class="col-md-3 control-lable" for="birthday">Date de naissance</label>
 				<div class="col-md-7">
 					<form:input type="date" path="docteur.birthday" id="birthday" class="form-control input-sm"/>
 					<div class="has-error">
@@ -165,7 +165,7 @@
 
 		<div class="row">
 			<div class="form-actions floatRight">
-				<input type="submit" value="Register" class="btn btn-primary btn-sm"> or <a href="<c:url value='/admin' />">Cancel</a>
+				<input type="submit" value="Register" class="btn btn-primary btn-sm"> ou <a href="<c:url value='/admin' />">Annuler</a>
 			</div>
 		</div>
 	</form:form>

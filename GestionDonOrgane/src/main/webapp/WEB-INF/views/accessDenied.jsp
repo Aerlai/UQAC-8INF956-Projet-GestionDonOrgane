@@ -8,7 +8,7 @@
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
-	Dear <strong>${user}</strong>, You are not authorized to access this page.
+	Chère <strong>${user}</strong>, Vous n'êtes pas authorisé à acceder à cette page.
 	<br/>
 	<a href="<c:url value="/home" />">Go to home</a> OR <a href="<c:url value="/logout" />">Logout</a>
 </body>

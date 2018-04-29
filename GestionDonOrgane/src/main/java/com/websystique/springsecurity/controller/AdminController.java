@@ -131,7 +131,7 @@ public class AdminController {
 			}
 		}
 		
-		model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
+		model.addAttribute("success", "L'utilisateur " + user.getFirstName() + " a été enregistré avec succès");
 		return "registrationsuccess";
 	}
 	
@@ -194,7 +194,7 @@ public class AdminController {
 		hopital.setAdresse(registerHopital.getAdresse());
 		hopitalService.save(hopital);
 		
-		model.addAttribute("success", "Hopital " + hopital.getNom() + " has been registered successfully");
+		model.addAttribute("success", "l'hopital " + hopital.getNom() + " a été enregistré avec succès");
 		return "registrationsuccess";
 	}
 	
@@ -249,7 +249,7 @@ public class AdminController {
 //			}
 //		}
 		
-		model.addAttribute("success", "Transporteur " + transporteur.getNom() + " has been registered successfully");
+		model.addAttribute("success", "Le transporteur " + transporteur.getNom() + " a été enregistré avec succès");
 		return "registrationsuccess";
 	}
 
@@ -290,7 +290,7 @@ public class AdminController {
 		Docteur docteur = registerDocteur.getDocteur();
 		docteurService.save(docteur);
 		
-		model.addAttribute("success", "Docteur " + docteur.getFirstName() + " has been registered successfully");
+		model.addAttribute("success", "Le docteur " + docteur.getFirstName() + " a été enregistré avec succès");
 		return "registrationsuccess";
 	}
 }

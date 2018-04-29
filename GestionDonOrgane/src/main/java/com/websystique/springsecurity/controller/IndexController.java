@@ -28,7 +28,7 @@ public class IndexController {
 	
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
-		model.addAttribute("greeting", "Hi, Welcome to mysite");
+		model.addAttribute("greeting", "Bonjour, bienvenu sur le site");
 		return "welcome";
 	}
 

@@ -41,7 +41,7 @@
 	</nav>
 	<section>
 		<article class="success">
-			Confirmation message : ${success}
+			Message de confirmation : ${success}
 			<p>
 			<security:authorize access="hasRole('ADMIN')">
 				

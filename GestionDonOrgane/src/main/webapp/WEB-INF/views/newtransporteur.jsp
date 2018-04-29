@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Hopital Registration Form</title>
+	<title>Formulaire de création de transporteur</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -83,7 +83,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="Address1">Address1</label>
+						<label class="col-md-3 control-lable" for="Address1">Adresse 1</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.address1" id="Address1" class="form-control input-sm"/>
 							<div class="has-error">
@@ -95,7 +95,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="Address2">Address2</label>
+						<label class="col-md-3 control-lable" for="Address2">Adresse 2</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.address2" id="Address2" class="form-control input-sm"/>
 							<div class="has-error">
@@ -107,7 +107,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="Address3">Address3</label>
+						<label class="col-md-3 control-lable" for="Address3">Adresse 3</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.address3" id="Address3" class="form-control input-sm"/>
 							<div class="has-error">
@@ -119,7 +119,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="City">City</label>
+						<label class="col-md-3 control-lable" for="City">Ville</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.city" id="City" class="form-control input-sm"/>
 							<div class="has-error">
@@ -131,7 +131,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="State">State</label>
+						<label class="col-md-3 control-lable" for="State">Etat</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.state" id="State" class="form-control input-sm"/>
 							<div class="has-error">
@@ -143,7 +143,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="Country">Country</label>
+						<label class="col-md-3 control-lable" for="Country">Pays</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.country" id="adresse.Country" class="form-control input-sm"/>
 							<div class="has-error">
@@ -155,7 +155,7 @@
 				
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-3 control-lable" for="PostalCode">Postal Code</label>
+						<label class="col-md-3 control-lable" for="PostalCode">Code postal</label>
 						<div class="col-md-7">
 							<form:input type="text" path="adresse.postalCode" id="PostalCode" class="form-control input-sm"/>
 							<div class="has-error">
@@ -168,7 +168,7 @@
 		
 				<div class="row">
 					<div class="form-actions floatRight">
-						<input type="submit" value="Register" class="btn btn-primary btn-sm"> or <a href="<c:url value='/admin' />">Cancel</a>
+						<input type="submit" value="Valider" class="btn btn-primary btn-sm"> ou <a href="<c:url value='/admin' />">Annuler</a>
 					</div>
 				</div>
 			</form:form>
