@@ -156,9 +156,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="Address1">Address1</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.Address1" id="Address1" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.address1" id="Address1" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.Address1" class="help-inline"/>
+								<form:errors path="adresse.address1" class="help-inline"/>
 							</div>
 						</div>
 					</div>
@@ -168,9 +168,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="Address2">Address2</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.Address2" id="Address2" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.address2" id="Address2" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.Address2" class="help-inline"/>
+								<form:errors path="adresse.address2" class="help-inline"/>
 							</div>
 						</div>
 					</div>
@@ -180,9 +180,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="Address3">Address3</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.Address3" id="Address3" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.address3" id="Address3" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.Address3" class="help-inline"/>
+								<form:errors path="adresse.address3" class="help-inline"/>
 							</div>
 						</div>
 					</div>
@@ -192,9 +192,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="City">City</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.City" id="City" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.city" id="City" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.City" class="help-inline"/>
+								<form:errors path="adresse.city" class="help-inline"/>
 							</div>
 						</div>
 					</div>
@@ -204,9 +204,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="State">State</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.State" id="State" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.state" id="State" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.State" class="help-inline"/>
+								<form:errors path="adresse.state" class="help-inline"/>
 							</div>
 						</div>
 					</div>
@@ -216,9 +216,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="Country">Country</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.Country" id="adresse.Country" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.country" id="adresse.Country" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.Country" class="help-inline"/>
+								<form:errors path="adresse.country" class="help-inline"/>
 							</div>
 						</div>
 					</div>
@@ -228,9 +228,9 @@
 					<div class="form-group col-md-12">
 						<label class="col-md-3 control-lable" for="PostalCode">Postal Code</label>
 						<div class="col-md-7">
-							<form:input type="text" path="adresse.PostalCode" id="PostalCode" class="form-control input-sm"/>
+							<form:input type="text" path="adresse.postalCode" id="PostalCode" class="form-control input-sm"/>
 							<div class="has-error">
-								<form:errors path="adresse.PostalCode" class="help-inline"/>
+								<form:errors path="adresse.postalCode" class="help-inline"/>
 							</div>
 						</div>
 					</div>

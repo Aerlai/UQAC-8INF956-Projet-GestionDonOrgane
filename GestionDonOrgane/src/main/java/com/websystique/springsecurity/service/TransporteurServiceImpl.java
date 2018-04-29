@@ -1,5 +1,7 @@
 package com.websystique.springsecurity.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,11 @@ public class TransporteurServiceImpl implements TransporteurService{
 	public Transporteur findByName(String nom) {
 		
 		return dao.findByName(nom);
+	}
+
+	
+	public List<Transporteur> findAll() {
+		return dao.findAll();
 	}
 	
 }

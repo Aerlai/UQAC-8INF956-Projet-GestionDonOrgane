@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.websystique.springsecurity.dao.HopitalDao;
+import com.websystique.springsecurity.model.Docteur;
 import com.websystique.springsecurity.model.Hopital;
 
 @Service("hopitalService")
@@ -29,7 +30,7 @@ public class HopitalServiceImpl implements HopitalService{
 		return dao.findAll();
 	}
 
-	@Override
+	
 	public Hopital findByName(String name) {
 		return dao.findByName(name);
 	}

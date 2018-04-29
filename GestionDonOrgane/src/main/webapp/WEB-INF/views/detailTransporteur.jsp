@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Admin page</title>
+	<title>Patient</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -41,55 +40,47 @@
 		</ul>
 	</nav>
 	<section>
+	<h2>Transporteur :${transporteur.nom} </h2>
 		<article class="success">
-			<p><a href="<c:url value='/newDocteur' />">Créer un nouveau docteur</a></p>
-			<p><a href="<c:url value='/newHopital' />">Créer un nouveau hopital</a></p>
-			<p><a href="<c:url value='/newTransporteur' />">Créer un nouveau transporteur</a></p>
-		</article>
-	</section>
-	
-	<section>
-		<h2>Liste des hopitaux</h2>
-		<article class="success">
-			<table class="table table-over">
-				<thead>
-			      <tr>
-			        <th>Nom</th>
-			        <th>Ville</th>
-			        <th>Détail</th>
-			      </tr>
-			    </thead>
-			  <c:forEach items="${hopitaux}" var="hopital">
+			<table class="table table-striped">
+			    <tbody>
 			    <tr>
-			      <td><c:out value="${hopital.nom}" /></td>
-			      <td><c:out value="${hopital.adresse.city}" /></td>
-			      <td><a href="<c:url value='/hopital/details/${hopital.id}' />"> Détail</a></td>
-			    </tr>
-			  </c:forEach>
-			</table>
-		</article>
-	</section>
-	
-	<section>
-		<h2>Liste des transporteurs</h2>
-		<article class="success">
-			<table class="table table-over">
-				<thead>
-			      <tr>
-			        <th>Nom</th>
-			        <th>Ville</th>
-			        <th>Détail</th>
+			        <td>Adresse email</td>
+			        <td>${transporteur.email}</td>
 			      </tr>
-			    </thead>
-			  <c:forEach items="${transporteurs}" var="trans">
-			    <tr>
-			      <td><c:out value="${trans.nom}" /></td>
-			      <td><c:out value="${trans.adresse.city}" /></td>
-			      <td><a href="<c:url value='/transporteur/details/${trans.id}' />"> Détail</a></td>
-			    </tr>
-			  </c:forEach>
-			</table>
+			      <tr>
+			        <td>Adresse 1</td>
+			        <td>${transporteur.adresse.address1}</td>
+			      </tr>
+			      <tr>
+			        <td>Adresse 2</td>
+			        <td>${transporteur.adresse.address2}</td>
+			      </tr>
+			      <tr>
+			        <td>Adresse 3</td>
+			        <td>${transporteur.adresse.address3}</td>
+			      </tr>
+			      <tr>
+			        <td>Ville</td>
+			        <td>${transporteur.adresse.city}</td>
+			      </tr>
+			      <tr>
+			        <td>Code postal</td>
+			        <td>${transporteur.adresse.postalCode}</td>
+			      </tr>
+			      <tr>
+			        <td>Région</td>
+			        <td>${transporteur.adresse.state}</td>
+			      </tr>
+			      <tr>
+			        <td>Pays</td>
+			        <td>${transporteur.adresse.country}</td>
+			      </tr>
+			    </tbody>
+			 </table>
 		</article>
+		
+<a class="btn btn-primary btn-md" href="<c:url value="/admin"/>">Retour</a>
 	</section>
 </body>
 </html>

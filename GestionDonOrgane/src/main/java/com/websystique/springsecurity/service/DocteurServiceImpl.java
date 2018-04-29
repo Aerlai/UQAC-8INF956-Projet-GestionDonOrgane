@@ -1,5 +1,7 @@
 package com.websystique.springsecurity.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,11 @@ public class DocteurServiceImpl implements DocteurService{
 	
 	public Docteur findBySso(String sso) {
 		return dao.findBySso(sso);
+	}
+
+	
+	public List<Docteur> findAllInHopitalId(Integer id) {
+		return dao.findAllInHopitalId(id);
 	}
 	
 }

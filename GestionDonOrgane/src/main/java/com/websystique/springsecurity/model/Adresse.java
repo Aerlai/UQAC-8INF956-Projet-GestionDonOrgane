@@ -39,35 +39,35 @@ public class Adresse {
 	@NotEmpty(message="Entrez votre adresse")
 	@Size(max=120, message="120 caractères maximum. Divisez avec les autres champs")
 	@Column(name="Address1", nullable=false, columnDefinition="VARCHAR(120)")
-	private String Address1;
+	private String address1;
 	
 	@Size(max=120, message="120 caractères maximum. Divisez avec les autres champs")
 	@Column(name="Address2", nullable=true, columnDefinition="VARCHAR(120)")
-	private String Address2;
+	private String address2;
 		
 	@Size(max=120, message="120 caractères maximum. Divisez avec les autres champs")
 	@Column(name="Address3", nullable=true, columnDefinition="VARCHAR(120)")
-	private String Address3;
+	private String address3;
 
 	@NotEmpty(message = "Entrez votre nom de ville")
 	@Size(max=100)
 	@Column(name="City", nullable=false, columnDefinition="VARCHAR(100)")
-	private String City;
+	private String city;
 
 	@Size(max=2, message = "Doit être en deux lettres (ex : Québec = QC)")
 	@Column(name="State", nullable=true)
-	private String State;
+	private String state;
 	
 
 	@NotEmpty(message = "Entrez votre indicatif pays")
 	@Size(min=2, max=2, message="Doit être en deux lettres (ex : Canada = CA)")
 	@Column(name="Country", nullable=false, columnDefinition="VARCHAR(2)")
-	private String Country;
+	private String country;
 
 	@NotEmpty
 	@Size(max=16, message="Maximum 16 lettres")
 	@Column(name="PostalCode", nullable=false, columnDefinition="VARCHAR(16)")
-	private String PostalCode;
+	private String postalCode;
 	
 
 	
@@ -91,98 +91,98 @@ public class Adresse {
 
 
 	public String getAddress1() {
-		return Address1;
+		return address1;
 	}
 
 
 
 
 	public void setAddress1(String address1) {
-		Address1 = address1;
+		this.address1 = address1;
 	}
 
 
 
 
 	public String getAddress2() {
-		return Address2;
+		return address2;
 	}
 
 
 
 
 	public void setAddress2(String address2) {
-		Address2 = address2;
+		this.address2 = address2;
 	}
 
 
 
 
 	public String getAddress3() {
-		return Address3;
+		return address3;
 	}
 
 
 
 
 	public void setAddress3(String address3) {
-		Address3 = address3;
+		this.address3 = address3;
 	}
 
 
 
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 
 
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 
 
 
 
 	public String getState() {
-		return State;
+		return state;
 	}
 
 
 
 
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 
 
 
 
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 
 
 
 
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 
 
 
 
 	public String getPostalCode() {
-		return PostalCode;
+		return postalCode;
 	}
 
 
 
 
 	public void setPostalCode(String postalCode) {
-		PostalCode = postalCode;
+		this.postalCode = postalCode;
 	}
 
 
@@ -190,7 +190,7 @@ public class Adresse {
 
 	@Override
 	public String toString() {
-		return "Adresse : " + id + " , Adresse 1 :" +Address1;
+		return "Adresse : " + id + " , Adresse 1 :" +address1;
 	}
 
 	

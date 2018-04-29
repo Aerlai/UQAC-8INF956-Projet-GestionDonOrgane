@@ -1,6 +1,7 @@
 package com.websystique.springsecurity.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -12,12 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.websystique.springsecurity.model.Docteur;
 import com.websystique.springsecurity.model.Hopital;
+import com.websystique.springsecurity.model.Patient;
 import com.websystique.springsecurity.model.RegisterDocteur;
 import com.websystique.springsecurity.model.RegisterHopital;
 import com.websystique.springsecurity.model.RegisterPatient;
@@ -53,6 +56,8 @@ public class AdminController {
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
+		model.addAttribute("hopitaux", hopitalService.findAll());
+		model.addAttribute("transporteurs", transporteurService.findAll());
 		return "admin";
 	}
 	
@@ -62,6 +67,28 @@ public class AdminController {
 		model.addAttribute("user", getPrincipal());
 		return "dba";
 	}
+	
+	@RequestMapping(value="/hopital/details/{id}", method=RequestMethod.GET)
+    public ModelAndView detailHopital(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("detailHopital");
+        Hopital h = hopitalService.findById(id);
+        List<Docteur> ld = docteurService.findAllInHopitalId(id);
+        modelAndView.addObject("hopital",h);
+        
+       modelAndView.addObject("docteurs",ld);
+        
+        return modelAndView;
+    }
+	
+	@RequestMapping(value="/transporteur/details/{id}", method=RequestMethod.GET)
+    public ModelAndView detailTransporteur(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("detailTransporteur");
+        Transporteur h = transporteurService.findById(id);
+        modelAndView.addObject("transporteur",h);
+        
+        return modelAndView;
+    }
+	
 	
 	@RequestMapping(value = "/newUser", method = RequestMethod.GET)
 	public String newRegistration(ModelMap model) {

@@ -1,12 +1,19 @@
 package com.websystique.springsecurity.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -31,7 +38,7 @@ public class Hopital {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nom",columnDefinition="VARCHAR(30)", nullable=false)
+	@Column(name="nom",columnDefinition="VARCHAR(30)", nullable=false, unique=true)
 	@Size(max=30)
 	@NotEmpty
 	private String nom;
@@ -46,6 +53,7 @@ public class Hopital {
 	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_adresse")
 	private Adresse adresse;
+	
 
 	public int getId() {
 		return id;
