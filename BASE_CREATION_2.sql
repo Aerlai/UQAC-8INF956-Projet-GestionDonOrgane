@@ -84,13 +84,13 @@ create table TYPE_PATIENT(
 create table PATIENT(
 	id_personne bigint,
     groupe_sang varchar(3) NOT NULL,
-    #id_docteur bigint,
+    id_docteur bigint,
     #id_hopital bigint,
     id_adresse bigint,
     constraint FK_ADRESSE_PATIENT foreign key (id_adresse) REFERENCES ADRESSE (id),
     #constraint FK_HOPITAL_PATIENT foreign key (id_hopital) REFERENCES HOPITAL (id),
 	constraint FK_PERSONNE_PATIENT foreign key (id_personne) REFERENCES APP_USER (id),
-    #constraint FK_DOCTEUR_PATIENT foreign key (id_docteur) REFERENCES DOCTEUR (id_personne),
+    constraint FK_DOCTEUR_PATIENT foreign key (id_docteur) REFERENCES DOCTEUR (id_personne),
     primary key(id_personne) #Une personne peut être à la foi donneur et receveur, du coup deux entrées
 );
 
@@ -204,7 +204,6 @@ INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
 
 INSERT INTO ADRESSE (Address1, City, Country, PostalCode)
 VALUES ('boul Universite', 'Chicoutimi', 'CA', 'POSTCODE');
-
 
 INSERT INTO PATIENT (id_personne, groupe_sang, id_adresse)
 VALUES (2, 'AB+', 1);
